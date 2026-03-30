@@ -50,6 +50,43 @@ function createVideoCard(asset) {
   `;
 }
 
+function updateFilterButtons(activeFilter) {
+  const buttons = document.querySelectorAll('[data-gallery-filter]');
+  buttons.forEach((button) => {
+    const filter = button.dataset.galleryFilter;
+    const isActive = filter === activeFilter;
+    button.classList.toggle('bg-primary', isActive);
+    button.classList.toggle('text-on-primary', isActive);
+    button.classList.toggle('bg-white/10', !isActive);
+    button.classList.toggle('text-on-surface', !isActive);
+  });
+}
+
+function applyGalleryFilter(filter) {
+  const imageSection = document.getElementById('image-section');
+  const videoSection = document.getElementById('video-section');
+  if (imageSection) {
+    imageSection.classList.toggle('hidden', filter === 'videos');
+  }
+  if (videoSection) {
+    videoSection.classList.toggle('hidden', filter === 'images');
+  }
+  updateFilterButtons(filter);
+}
+
+function attachGalleryFilterControls() {
+  const buttons = document.querySelectorAll('[data-gallery-filter]');
+  if (!buttons.length) {
+    return;
+  }
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.galleryFilter;
+      applyGalleryFilter(filter);
+    });
+  });
+}
+
 function renderGallery() {
   if (!window.GALLERY_ASSETS || !Array.isArray(window.GALLERY_ASSETS)) {
     return;
@@ -75,6 +112,9 @@ function renderGallery() {
   if (videoGrid) {
     videoGrid.innerHTML = videos.map(createVideoCard).join('');
   }
+
+  attachGalleryFilterControls();
+  applyGalleryFilter('all');
 }
 
 document.addEventListener('DOMContentLoaded', renderGallery);
