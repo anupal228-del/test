@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Editor | Anurag Pal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/site-content.js"></script>
+    <script src="assets/editor.js"></script>
+  </head>
+  <body class="min-h-screen bg-[#0F0F16] text-white font-sans">
+    <div class="max-w-6xl mx-auto px-6 py-10">
+      <div class="mb-10">
+        <h1 class="text-4xl font-black">Portfolio Site Editor</h1>
+        <p class="mt-4 text-sm text-slate-400">Edit site content without touching code. Save changes in your browser, preview instantly, or export the JSON for GitHub updates.</p>
+      </div>
+
+      <div class="space-y-4 mb-8">
+        <button id="save-button" class="px-6 py-3 bg-primary text-black rounded-full font-semibold hover:bg-indigo-300">Save Changes</button>
+        <button id="export-button" class="px-6 py-3 border border-white/20 rounded-full text-white hover:border-primary">Export JSON</button>
+        <button id="reset-button" class="px-6 py-3 border border-red-400 rounded-full text-red-300 hover:bg-red-500/10">Reset Local Content</button>
+        <button id="clear-button" class="px-6 py-3 border border-white/20 rounded-full text-white hover:border-primary">Load Default Content</button>
+      </div>
+
+      <div id="editor-form" class="space-y-8"></div>
+
+      <div class="mt-10 p-6 bg-slate-900 rounded-3xl border border-white/10">
+        <h2 class="text-xl font-bold mb-4">How it works</h2>
+        <ul class="list-disc list-inside text-slate-400 space-y-2 text-sm">
+          <li>Change any field in the form and click <strong>Save Changes</strong>.</li>
+          <li>Open <code>index.html</code> or <code>gallery.html</code> in your browser to preview the live content.</li>
+          <li>Use <strong>Export JSON</strong> to download the current content file for a permanent GitHub update.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
